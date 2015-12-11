@@ -1,0 +1,2 @@
+#!/bin/bash
+bin/get_deployed_versions cf-cfapps-io2-diego cf diego etcd garden-linux > current.json

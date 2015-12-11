@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# The following environment variables are expected
+#  BOSH_DIRECTOR
+#  BOSH_USER
+#  BOSH_PASSWORD
+
+exec 1>&2
+[[ -z "${BOSH_DIRECTOR}" ]] && { echo "Please define \$BOSH_DIRECTOR"; exit 1; } 
+[[ -z "${BOSH_USER}" ]] && { echo "Please define \$BOSH_USER"; exit 1; } 
+[[ -z "${BOSH_PASSWORD}" ]] && { echo "Please define \$BOSH_PASSOWRD"; exit 1; } 
+[[ "jq-1.5" != $(jq --version) ]] && { echo "Please use at least jq-1.5, or update this script"; exit 1; }
+
+deploymentname=$1
+shift
+
+releasenames=$(echo $@ | sed -e 's/\s/|/g')
+
+curl --silent --insecure --user ${BOSH_USER}:${BOSH_PASSWORD} ${BOSH_DIRECTOR}/deployments|\
+  jq ".[] | select(.name == \"${deploymentname}\") | [{release: (.releases[] | select(.name | test(\"${releasenames}\"))), stemcell: .stemcells[0]}]" >&1

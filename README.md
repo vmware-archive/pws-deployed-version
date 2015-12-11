@@ -10,4 +10,15 @@ This repo contains the currently deployed version of:
 # Usage
 
 # log into bosh
-bin/get_deployed_versions 
+
+```
+export BOSH_DIRECTOR=https://uri.to.bosh:25555
+export BOSH_USER=bosh
+export BOSH_PASSWORD=sameasmyluggage
+
+bin/get_deployed_vers <deploymentname> <releasename_1> [releasename_2] [releasename_n]
+```
+
+# Requirements
+
+jq >= 1.5 in $PATH
