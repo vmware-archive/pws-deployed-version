@@ -1,8 +1,8 @@
 [
   {
     "release": {
-      "name": "cf",
-      "version": "266"
+      "name": "etcd",
+      "version": "18"
     },
     "stemcell": {
       "name": "bosh-aws-xen-hvm-ubuntu-trusty-go_agent",
@@ -12,17 +12,7 @@
   {
     "release": {
       "name": "diego",
-      "release": "0.1442.0"
-    },
-    "stemcell": {
-      "name": "bosh-aws-xen-hvm-ubuntu-trusty-go_agent",
-      "version": "3147"
-    }
-  },
-  {
-    "release": {
-      "name": "etcd",
-      "release": "18"
+      "version": "0.1442.0"
     },
     "stemcell": {
       "name": "bosh-aws-xen-hvm-ubuntu-trusty-go_agent",
@@ -32,7 +22,17 @@
   {
     "release": {
       "name": "garden-linux",
-      "release": "0.328.0"
+      "version": "0.328.0"
+    },
+    "stemcell": {
+      "name": "bosh-aws-xen-hvm-ubuntu-trusty-go_agent",
+      "version": "3147"
+    }
+  },
+  {
+    "release": {
+      "name": "cf",
+      "version": "226"
     },
     "stemcell": {
       "name": "bosh-aws-xen-hvm-ubuntu-trusty-go_agent",
