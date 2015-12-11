@@ -1,2 +1,38 @@
-#!/bin/bash
-bin/get_deployed_versions cf-cfapps-io2-diego cf diego etcd garden-linux > current.json
+#!/usr/bin/env ruby
+require 'open3'
+require 'timeout'
+require 'json'
+require 'pry'
+
+cmd = 'bin/get_deployed_versions cf-cfapps-io2-diego cf diego etcd garden-linux'
+status=nil
+output=''
+Open3.popen2e(cmd) do |i, oe, t|
+  begin
+    pid = t.pid
+
+    Timeout.timeout(1.9) do
+      oe.each { |v|
+        output << v
+      }
+    end
+  rescue Timeout::Error
+    LOGGER.warn "Timing out #{t.inspect} after 1 second"
+    Process.kill(15, pid)
+  ensure
+    status = t.value
+  end
+end
+raise unless status.success?
+
+poutput = JSON.parse(output)
+
+notes = JSON.parse(IO.read 'notes.json')
+
+
+poutput.map do |thing| 
+  notes_with_version = notes[thing["release"]["name"]] + thing["release"]["version"]
+  thing["release"]["notes"] = notes_with_version
+end
+
+IO.write( 'current.json', JSON.pretty_generate(poutput) )
