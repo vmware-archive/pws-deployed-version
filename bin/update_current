@@ -2,33 +2,41 @@
 require 'open3'
 require 'timeout'
 require 'json'
-require 'pry'
 
-cmd = 'bin/get_deployed_versions cf-cfapps-io2-diego cf diego etcd garden-linux'
-status=nil
-output=''
-Open3.popen2e(cmd) do |i, oe, t|
-  begin
-    pid = t.pid
-
-    Timeout.timeout(1.9) do
-      oe.each { |v|
-        output << v
-      }
+def get_deployed_version(deployments, *releases)
+  cmd = [File.expand_path('../get_deployed_versions', __FILE__)]
+  cmd << deployments
+  cmd += releases
+  status = nil
+  output = ''
+  Open3.popen2e(cmd.join(' ')) do |i, oe, t|
+    begin
+      pid = t.pid
+  
+      Timeout.timeout(1.9) do
+        oe.each { |v|
+          output << v
+        }
+      end
+    rescue Timeout::Error
+      LOGGER.warn "Timing out #{t.inspect} after 1 second"
+      Process.kill(15, pid)
+    ensure
+      status = t.value
     end
-  rescue Timeout::Error
-    LOGGER.warn "Timing out #{t.inspect} after 1 second"
-    Process.kill(15, pid)
-  ensure
-    status = t.value
   end
+  raise unless status.success?
+  JSON.parse(output)
 end
-raise unless status.success?
 
-poutput = JSON.parse(output)
+# main
+poutput = get_deployed_version('cf-cfapps-io2-diego',  %w(cf diego etcd garden-linux))
 
+poutput.sort! {|i,j| i['release']['name'] <=> j['release']['name'] }
+
+ENV['BOSH_DIRECTOR'] = ENV['BOSH_DIRECTOR'].sub("bosh", "micro")
+poutput += get_deployed_version('vpc-bosh-run-pivotal-io', 'bosh')
 notes = JSON.parse(IO.read 'notes.json')
-
 
 poutput.map do |thing| 
   notes_with_version = notes[thing["release"]["name"]] + thing["release"]["version"]

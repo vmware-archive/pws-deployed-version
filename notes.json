@@ -2,6 +2,7 @@
   "diego": "https://github.com/cloudfoundry-incubator/diego-release/releases/tag/v",
   "etcd": "https://github.com/cloudfoundry-incubator/etcd-release/releases/tag/v",
   "garden-linux": "https://github.com/cloudfoundry-incubator/garden-linux-release/releases/tag/v",
-  "cf": "https://github.com/cloudfoundry/cf-release/releases/tag/v"
+  "cf": "https://github.com/cloudfoundry/cf-release/releases/tag/v",
+  "bosh": "http://bosh.io/releases/github.com/cloudfoundry/bosh?version="
 }
 
