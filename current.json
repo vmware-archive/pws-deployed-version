@@ -1,9 +1,9 @@
 [
   {
     "release": {
-      "name": "etcd",
-      "version": "18",
-      "notes": "https://github.com/cloudfoundry-incubator/etcd-release/releases/tag/v18"
+      "name": "cf",
+      "version": "226",
+      "notes": "https://github.com/cloudfoundry/cf-release/releases/tag/v226"
     },
     "stemcell": {
       "name": "bosh-aws-xen-hvm-ubuntu-trusty-go_agent",
@@ -23,9 +23,9 @@
   },
   {
     "release": {
-      "name": "garden-linux",
-      "version": "0.328.0",
-      "notes": "https://github.com/cloudfoundry-incubator/garden-linux-release/releases/tag/v0.328.0"
+      "name": "etcd",
+      "version": "18",
+      "notes": "https://github.com/cloudfoundry-incubator/etcd-release/releases/tag/v18"
     },
     "stemcell": {
       "name": "bosh-aws-xen-hvm-ubuntu-trusty-go_agent",
@@ -34,13 +34,24 @@
   },
   {
     "release": {
-      "name": "cf",
-      "version": "226",
-      "notes": "https://github.com/cloudfoundry/cf-release/releases/tag/v226"
+      "name": "garden-linux",
+      "version": "0.330.0",
+      "notes": "https://github.com/cloudfoundry-incubator/garden-linux-release/releases/tag/v0.330.0"
     },
     "stemcell": {
       "name": "bosh-aws-xen-hvm-ubuntu-trusty-go_agent",
       "version": "3147"
+    }
+  },
+  {
+    "release": {
+      "name": "bosh",
+      "version": "223",
+      "notes": "http://bosh.io/releases/github.com/cloudfoundry/bosh?version=223"
+    },
+    "stemcell": {
+      "name": "bosh-aws-xen-hvm-ubuntu-trusty-go_agent",
+      "version": "3130"
     }
   }
 ]
