@@ -7,6 +7,8 @@ This repo contains the currently deployed version of:
 - [etcd-release](https://bosh.io/releases/github.com/cloudfoundry-incubator/etcd-release)
 - [garden-linux-release](https://bosh.io/releases/github.com/cloudfoundry-incubator/garden-linux-release)
 
+The current.json file is consumed by [https://status.run.pivotal.io](https://status.run.pivotal.io)
+
 # Usage
 
 # log into bosh
