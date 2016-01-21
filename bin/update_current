@@ -2,6 +2,9 @@
 require 'open3'
 require 'timeout'
 require 'json'
+require 'logger'
+
+LOGGER ||= Logger.new($stderr)
 
 def get_deployed_version(deployments, *releases)
   cmd = [File.expand_path('../get_deployed_versions', __FILE__)]
@@ -13,7 +16,7 @@ def get_deployed_version(deployments, *releases)
     begin
       pid = t.pid
   
-      Timeout.timeout(1.9) do
+      Timeout.timeout(9) do
         oe.each { |v|
           output << v
         }
