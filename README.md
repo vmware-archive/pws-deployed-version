@@ -11,7 +11,7 @@ The current.json file is consumed by [https://status.run.pivotal.io](https://sta
 
 # Usage
 
-# log into bosh
+# get deployed versions
 
 ```
 export BOSH_DIRECTOR=https://uri.to.bosh:25555
@@ -19,6 +19,12 @@ export BOSH_USER=bosh
 export BOSH_PASSWORD=sameasmyluggage
 
 bin/get_deployed_vers <deploymentname> <releasename_1> [releasename_2] [releasename_n]
+```
+
+# update the current.json
+```
+# same exports as above
+bin/update_current
 ```
 
 # Requirements
