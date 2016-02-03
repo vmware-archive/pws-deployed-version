@@ -12,12 +12,12 @@ def get_deployed_version(deployments, *releases)
   cmd += releases
   status = nil
   output = ''
-  Open3.popen2e(cmd.join(' ')) do |i, oe, t|
+  Open3.popen2(cmd.join(' ')) do |i, o, t|
     begin
       pid = t.pid
   
       Timeout.timeout(9) do
-        oe.each { |v|
+        o.each { |v|
           output << v
         }
       end
@@ -46,4 +46,6 @@ poutput.map do |thing|
   thing["release"]["notes"] = notes_with_version
 end
 
-IO.write( 'current.json', JSON.pretty_generate(poutput) )
+result = JSON.pretty_generate(poutput)
+IO.write( 'current.json', result )
+LOGGER.info("wrote #{result} to current.json")

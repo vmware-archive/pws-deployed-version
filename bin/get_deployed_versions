@@ -15,5 +15,10 @@ shift
 
 releasenames=$(echo $@ | sed -e 's/\s/|/g')
 
-curl --silent --insecure --user ${BOSH_USER}:${BOSH_PASSWORD} ${BOSH_DIRECTOR}/deployments|\
-  jq ".[] | select(.name == \"${deploymentname}\") | [{release: (.releases[] | select(.name | test(\"${releasenames}\"))), stemcell: .stemcells[0]}]"
+curl --silent --insecure --user ${BOSH_USER}:${BOSH_PASSWORD} ${BOSH_DIRECTOR}/deployments > output
+[[ $? != "0" ]] && { echo "Failed to perform curl against ${BOSH_DIRECTOR}/deployments" >&2; exit 1; }
+
+cat output | jq ".[] | select(.name == \"${deploymentname}\") | [{release: (.releases[] | select(.name | test(\"${releasenames}\"))), stemcell: .stemcells[0]}]"
+
+[[ $? == "0" ]] && { rm output; } 
+
