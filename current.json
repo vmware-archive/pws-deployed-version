@@ -2,8 +2,8 @@
   {
     "release": {
       "name": "cf",
-      "version": "232+dev.1",
-      "notes": "https://github.com/cloudfoundry/cf-release/releases/tag/v232+dev.1"
+      "version": "233",
+      "notes": "https://github.com/cloudfoundry/cf-release/releases/tag/v233"
     },
     "stemcell": {
       "name": "bosh-aws-xen-hvm-ubuntu-trusty-go_agent",
