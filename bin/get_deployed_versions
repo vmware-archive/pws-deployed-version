@@ -7,7 +7,7 @@
 [[ -z "${BOSH_DIRECTOR}" ]] && { echo "Please define \$BOSH_DIRECTOR" >&2; exit 1; } 
 [[ -z "${BOSH_USER}" ]] && { echo "Please define \$BOSH_USER" >&2; exit 1; } 
 [[ -z "${BOSH_PASSWORD}" ]] && { echo "Please define \$BOSH_PASSWORD" >&2; exit 1; } 
-[[ "jq-1.5" != $(./bin/jq --version) ]] && { echo "Please use at least jq-1.5, or update this script" >&2; exit 1; }
+[[ "jq-1.5" != $(jq --version) ]] && { echo "Please use jq-1.5, or update this script" >&2; exit 1; }
 
 deploymentname=$1
 shift
@@ -17,7 +17,7 @@ releasenames=$(echo $@ | sed -e 's/\s/|/g')
 curl --silent --insecure --user ${BOSH_USER}:${BOSH_PASSWORD} ${BOSH_DIRECTOR}/deployments > output
 [[ $? != "0" ]] && { echo "Failed to perform curl against ${BOSH_DIRECTOR}/deployments" >&2; exit 1; }
 
-cat output | ./bin/jq ".[] | select(.name == \"${deploymentname}\") | [{release: (.releases[] | select(.name | test(\"${releasenames}\"))), stemcell: .stemcells[0]}]"
+cat output | jq ".[] | select(.name == \"${deploymentname}\") | [{release: (.releases[] | select(.name | test(\"${releasenames}\"))), stemcell: .stemcells[0]}]"
 
 [[ $? == "0" ]] && { rm output; } 
 
