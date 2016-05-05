@@ -46,12 +46,12 @@
   {
     "release": {
       "name": "bosh",
-      "version": "256.1",
-      "notes": "http://bosh.io/releases/github.com/cloudfoundry/bosh?version=256.1"
+      "version": "256.2",
+      "notes": "http://bosh.io/releases/github.com/cloudfoundry/bosh?version=256.2"
     },
     "stemcell": {
       "name": "bosh-aws-xen-hvm-ubuntu-trusty-go_agent",
-      "version": "3232.1"
+      "version": "3232.2"
     }
   }
 ]
