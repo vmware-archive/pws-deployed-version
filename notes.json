@@ -3,6 +3,7 @@
   "etcd": "https://github.com/cloudfoundry-incubator/etcd-release/releases/tag/v",
   "garden-linux": "https://github.com/cloudfoundry-incubator/garden-linux-release/releases/tag/v",
   "cf": "https://github.com/cloudfoundry/cf-release/releases/tag/v",
-  "bosh": "http://bosh.io/releases/github.com/cloudfoundry/bosh?version="
+  "bosh": "http://bosh.io/releases/github.com/cloudfoundry/bosh?version=",
+  "cflinuxfs2-rootfs": "https://github.com/cloudfoundry/cflinuxfs2-rootfs-release/releases/tag/v"
 }
 
