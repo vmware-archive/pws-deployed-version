@@ -4,6 +4,7 @@
   "garden-linux": "https://github.com/cloudfoundry-incubator/garden-linux-release/releases/tag/v",
   "cf": "https://github.com/cloudfoundry/cf-release/releases/tag/v",
   "bosh": "http://bosh.io/releases/github.com/cloudfoundry/bosh?version=",
-  "cflinuxfs2-rootfs": "https://github.com/cloudfoundry/cflinuxfs2-rootfs-release/releases/tag/v"
+  "cflinuxfs2-rootfs": "https://github.com/cloudfoundry/cflinuxfs2-rootfs-release/releases/tag/v",
+  "bosh-aws-cpi": "https://github.com/cloudfoundry-incubator/bosh-aws-cpi-release/releases/tag/v"
 }
 
