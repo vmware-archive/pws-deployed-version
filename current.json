@@ -68,8 +68,8 @@
   {
     "release": {
       "name": "bosh-aws-cpi",
-      "version": "52",
-      "notes": "https://github.com/cloudfoundry-incubator/bosh-aws-cpi-release/releases/tag/v52"
+      "version": "53",
+      "notes": "https://github.com/cloudfoundry-incubator/bosh-aws-cpi-release/releases/tag/v53"
     },
     "stemcell": {
       "name": "bosh-aws-xen-hvm-ubuntu-trusty-go_agent",
