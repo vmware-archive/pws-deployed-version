@@ -12,6 +12,17 @@
   },
   {
     "release": {
+      "name": "cf",
+      "version": "238",
+      "notes": "https://github.com/cloudfoundry/cf-release/releases/tag/v238"
+    },
+    "stemcell": {
+      "name": "bosh-aws-xen-hvm-ubuntu-trusty-go_agent",
+      "version": "3196"
+    }
+  },
+  {
+    "release": {
       "name": "cflinuxfs2-rootfs",
       "version": "1.16.0",
       "notes": "https://github.com/cloudfoundry/cflinuxfs2-rootfs-release/releases/tag/v1.16.0"
