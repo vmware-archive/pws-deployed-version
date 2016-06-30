@@ -2,23 +2,12 @@
   {
     "release": {
       "name": "cf",
-      "version": "237",
-      "notes": "https://github.com/cloudfoundry/cf-release/releases/tag/v237"
-    },
-    "stemcell": {
-      "name": "bosh-aws-xen-hvm-ubuntu-trusty-go_agent",
-      "version": "3196"
-    }
-  },
-  {
-    "release": {
-      "name": "cf",
       "version": "238",
       "notes": "https://github.com/cloudfoundry/cf-release/releases/tag/v238"
     },
     "stemcell": {
       "name": "bosh-aws-xen-hvm-ubuntu-trusty-go_agent",
-      "version": "3196"
+      "version": "3232.12"
     }
   },
   {
@@ -29,7 +18,7 @@
     },
     "stemcell": {
       "name": "bosh-aws-xen-hvm-ubuntu-trusty-go_agent",
-      "version": "3196"
+      "version": "3232.12"
     }
   },
   {
@@ -40,7 +29,7 @@
     },
     "stemcell": {
       "name": "bosh-aws-xen-hvm-ubuntu-trusty-go_agent",
-      "version": "3196"
+      "version": "3232.12"
     }
   },
   {
@@ -51,7 +40,7 @@
     },
     "stemcell": {
       "name": "bosh-aws-xen-hvm-ubuntu-trusty-go_agent",
-      "version": "3196"
+      "version": "3232.12"
     }
   },
   {
@@ -62,7 +51,7 @@
     },
     "stemcell": {
       "name": "bosh-aws-xen-hvm-ubuntu-trusty-go_agent",
-      "version": "3196"
+      "version": "3232.12"
     }
   },
   {
