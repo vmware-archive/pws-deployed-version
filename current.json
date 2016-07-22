@@ -12,28 +12,6 @@
   },
   {
     "release": {
-      "name": "cf",
-      "version": "238",
-      "notes": "https://github.com/cloudfoundry/cf-release/releases/tag/v238"
-    },
-    "stemcell": {
-      "name": "bosh-aws-xen-hvm-ubuntu-trusty-go_agent",
-      "version": "3232.12"
-    }
-  },
-  {
-    "release": {
-      "name": "cflinuxfs2-rootfs",
-      "version": "1.16.0",
-      "notes": "https://github.com/cloudfoundry/cflinuxfs2-rootfs-release/releases/tag/v1.16.0"
-    },
-    "stemcell": {
-      "name": "bosh-aws-xen-hvm-ubuntu-trusty-go_agent",
-      "version": "3232.12"
-    }
-  },
-  {
-    "release": {
       "name": "cflinuxfs2-rootfs",
       "version": "1.18.0",
       "notes": "https://github.com/cloudfoundry/cflinuxfs2-rootfs-release/releases/tag/v1.18.0"
@@ -56,28 +34,6 @@
   },
   {
     "release": {
-      "name": "diego",
-      "version": "0.1476.0",
-      "notes": "https://github.com/cloudfoundry-incubator/diego-release/releases/tag/v0.1476.0"
-    },
-    "stemcell": {
-      "name": "bosh-aws-xen-hvm-ubuntu-trusty-go_agent",
-      "version": "3232.12"
-    }
-  },
-  {
-    "release": {
-      "name": "etcd",
-      "version": "57",
-      "notes": "https://github.com/cloudfoundry-incubator/etcd-release/releases/tag/v57"
-    },
-    "stemcell": {
-      "name": "bosh-aws-xen-hvm-ubuntu-trusty-go_agent",
-      "version": "3232.12"
-    }
-  },
-  {
-    "release": {
       "name": "etcd",
       "version": "60",
       "notes": "https://github.com/cloudfoundry-incubator/etcd-release/releases/tag/v60"
@@ -92,17 +48,6 @@
       "name": "garden-linux",
       "version": "0.339.0",
       "notes": "https://github.com/cloudfoundry-incubator/garden-linux-release/releases/tag/v0.339.0"
-    },
-    "stemcell": {
-      "name": "bosh-aws-xen-hvm-ubuntu-trusty-go_agent",
-      "version": "3232.12"
-    }
-  },
-  {
-    "release": {
-      "name": "garden-linux",
-      "version": "0.338.0",
-      "notes": "https://github.com/cloudfoundry-incubator/garden-linux-release/releases/tag/v0.338.0"
     },
     "stemcell": {
       "name": "bosh-aws-xen-hvm-ubuntu-trusty-go_agent",
