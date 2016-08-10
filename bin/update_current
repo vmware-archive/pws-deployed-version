@@ -6,8 +6,12 @@ require 'logger'
 
 LOGGER ||= Logger.new($stderr)
 
-def get_deployed_version(deployments, *releases)
-  cmd = [File.expand_path('../get_deployed_versions', __FILE__)]
+def get_deployed_version(deployments, use_uaa, *releases)
+  if use_uaa
+    cmd = [File.expand_path('../get_deployed_versions.rb', __FILE__)]
+  else
+    cmd = [File.expand_path('../get_deployed_versions', __FILE__)]
+  end
   cmd << deployments
   cmd += releases
   status = nil
@@ -33,12 +37,12 @@ def get_deployed_version(deployments, *releases)
 end
 
 # main
-poutput = get_deployed_version('cf-cfapps-io2-diego',  %w(cf diego etcd garden-linux))
+poutput = get_deployed_version('cf-cfapps-io2-diego', true, %w(cf diego etcd garden-linux))
 
 poutput.sort! {|i,j| i['release']['name'] <=> j['release']['name'] }
 
 ENV['BOSH_DIRECTOR'] = ENV['BOSH_DIRECTOR'].sub("bosh", "micro")
-poutput += get_deployed_version('vpc-bosh-run-pivotal-io', 'bosh')
+poutput += get_deployed_version('vpc-bosh-run-pivotal-io', false, 'bosh')
 notes = JSON.parse(IO.read 'notes.json')
 
 poutput.map do |thing| 
