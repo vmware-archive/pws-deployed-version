@@ -7,7 +7,7 @@
     },
     "stemcell": {
       "name": "bosh-aws-xen-hvm-ubuntu-trusty-go_agent",
-      "version": "3232.12"
+      "version": "3262.4"
     }
   },
   {
@@ -18,7 +18,7 @@
     },
     "stemcell": {
       "name": "bosh-aws-xen-hvm-ubuntu-trusty-go_agent",
-      "version": "3232.12"
+      "version": "3262.4"
     }
   },
   {
@@ -29,7 +29,7 @@
     },
     "stemcell": {
       "name": "bosh-aws-xen-hvm-ubuntu-trusty-go_agent",
-      "version": "3232.12"
+      "version": "3262.4"
     }
   },
   {
@@ -40,7 +40,7 @@
     },
     "stemcell": {
       "name": "bosh-aws-xen-hvm-ubuntu-trusty-go_agent",
-      "version": "3232.12"
+      "version": "3262.4"
     }
   },
   {
@@ -51,7 +51,7 @@
     },
     "stemcell": {
       "name": "bosh-aws-xen-hvm-ubuntu-trusty-go_agent",
-      "version": "3232.12"
+      "version": "3262.4"
     }
   },
   {
