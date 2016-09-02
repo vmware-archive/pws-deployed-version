@@ -45,17 +45,6 @@
   },
   {
     "release": {
-      "name": "garden-linux",
-      "version": "0.339.0",
-      "notes": "https://github.com/cloudfoundry-incubator/garden-linux-release/releases/tag/v0.339.0"
-    },
-    "stemcell": {
-      "name": "bosh-aws-xen-hvm-ubuntu-trusty-go_agent",
-      "version": "3262.4"
-    }
-  },
-  {
-    "release": {
       "name": "bosh",
       "version": "257.3",
       "notes": "http://bosh.io/releases/github.com/cloudfoundry/bosh?version=257.3"
