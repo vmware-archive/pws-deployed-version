@@ -36,7 +36,7 @@ def get_deployed_version(deployments, use_uaa, *releases)
 end
 
 # main
-poutput = get_deployed_version('cf-cfapps-io2-diego', true, %w(cf diego etcd garden-linux cflinuxfs2-rootfs))
+poutput = get_deployed_version('cf-cfapps-io2-diego', true, %w(cf diego etcd garden-runc cflinuxfs2-rootfs))
 
 poutput.sort! {|i,j| i['release']['name'] <=> j['release']['name'] }
 
