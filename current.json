@@ -46,17 +46,6 @@
   {
     "release": {
       "name": "garden-runc",
-      "version": "0.9.1",
-      "notes": "https://github.com/cloudfoundry/garden-runc-release/releases/tag/v0.9.1"
-    },
-    "stemcell": {
-      "name": "bosh-aws-xen-hvm-ubuntu-trusty-go_agent",
-      "version": "3263.2"
-    }
-  },
-  {
-    "release": {
-      "name": "garden-runc",
       "version": "0.9.2",
       "notes": "https://github.com/cloudfoundry/garden-runc-release/releases/tag/v0.9.2"
     },
