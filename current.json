@@ -34,17 +34,6 @@
   },
   {
     "release": {
-      "name": "etcd",
-      "version": "78",
-      "notes": "https://github.com/cloudfoundry-incubator/etcd-release/releases/tag/v78"
-    },
-    "stemcell": {
-      "name": "bosh-aws-xen-hvm-ubuntu-trusty-go_agent",
-      "version": "3312"
-    }
-  },
-  {
-    "release": {
       "name": "garden-runc",
       "version": "1.0.3",
       "notes": "https://github.com/cloudfoundry/garden-runc-release/releases/tag/v1.0.3"
