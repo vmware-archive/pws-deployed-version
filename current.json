@@ -2,17 +2,6 @@
   {
     "release": {
       "name": "cf",
-      "version": "246",
-      "notes": "https://github.com/cloudfoundry/cf-release/releases/tag/v246"
-    },
-    "stemcell": {
-      "name": "bosh-aws-xen-hvm-ubuntu-trusty-go_agent",
-      "version": "3312"
-    }
-  },
-  {
-    "release": {
-      "name": "cf",
       "version": "247",
       "notes": "https://github.com/cloudfoundry/cf-release/releases/tag/v247"
     },
