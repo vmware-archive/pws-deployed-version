@@ -12,6 +12,17 @@
   },
   {
     "release": {
+      "name": "cf",
+      "version": "252",
+      "notes": "https://github.com/cloudfoundry/cf-release/releases/tag/v252"
+    },
+    "stemcell": {
+      "name": "bosh-aws-xen-hvm-ubuntu-trusty-go_agent",
+      "version": "3312.12"
+    }
+  },
+  {
+    "release": {
       "name": "cflinuxfs2-rootfs",
       "version": "1.45.0",
       "notes": "https://github.com/cloudfoundry/cflinuxfs2-rootfs-release/releases/tag/v1.45.0"
@@ -23,9 +34,31 @@
   },
   {
     "release": {
+      "name": "cflinuxfs2-rootfs",
+      "version": "1.48.0",
+      "notes": "https://github.com/cloudfoundry/cflinuxfs2-rootfs-release/releases/tag/v1.48.0"
+    },
+    "stemcell": {
+      "name": "bosh-aws-xen-hvm-ubuntu-trusty-go_agent",
+      "version": "3312.12"
+    }
+  },
+  {
+    "release": {
       "name": "diego",
       "version": "1.5.3",
       "notes": "https://github.com/cloudfoundry/diego-release/releases/tag/v1.5.3"
+    },
+    "stemcell": {
+      "name": "bosh-aws-xen-hvm-ubuntu-trusty-go_agent",
+      "version": "3312.12"
+    }
+  },
+  {
+    "release": {
+      "name": "diego",
+      "version": "1.6.2",
+      "notes": "https://github.com/cloudfoundry/diego-release/releases/tag/v1.6.2"
     },
     "stemcell": {
       "name": "bosh-aws-xen-hvm-ubuntu-trusty-go_agent",
