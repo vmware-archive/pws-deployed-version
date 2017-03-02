@@ -51,7 +51,7 @@
     },
     "stemcell": {
       "name": "bosh-aws-xen-hvm-ubuntu-trusty-go_agent",
-      "version": "3263.7"
+      "version": "3363.9"
     }
   },
   {
@@ -62,7 +62,7 @@
     },
     "stemcell": {
       "name": "bosh-aws-xen-hvm-ubuntu-trusty-go_agent",
-      "version": "3263.7"
+      "version": "3363.9"
     }
   },
   {
@@ -73,7 +73,7 @@
     },
     "stemcell": {
       "name": "bosh-aws-xen-hvm-ubuntu-trusty-go_agent",
-      "version": "3263.7"
+      "version": "3363.9"
     }
   }
 ]
