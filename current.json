@@ -51,18 +51,7 @@
     },
     "stemcell": {
       "name": "bosh-aws-xen-hvm-ubuntu-trusty-go_agent",
-      "version": "3363.9"
-    }
-  },
-  {
-    "release": {
-      "name": "bosh",
-      "version": "261.2",
-      "notes": "http://bosh.io/releases/github.com/cloudfoundry/bosh?version=261.2"
-    },
-    "stemcell": {
-      "name": "bosh-aws-xen-hvm-ubuntu-trusty-go_agent",
-      "version": "3363.9"
+      "version": "3363.12"
     }
   },
   {
@@ -73,18 +62,7 @@
     },
     "stemcell": {
       "name": "bosh-aws-xen-hvm-ubuntu-trusty-go_agent",
-      "version": "3363.9"
-    }
-  },
-  {
-    "release": {
-      "name": "bosh",
-      "version": "260",
-      "notes": "http://bosh.io/releases/github.com/cloudfoundry/bosh?version=260"
-    },
-    "stemcell": {
-      "name": "bosh-aws-xen-hvm-ubuntu-trusty-go_agent",
-      "version": "3363.9"
+      "version": "3363.12"
     }
   }
 ]
