@@ -45,9 +45,9 @@
   },
   {
     "release": {
-      "name": "bosh-aws-cpi",
-      "version": "62",
-      "notes": "https://github.com/cloudfoundry-incubator/bosh-aws-cpi-release/releases/tag/v62"
+      "name": "bosh",
+      "version": "261.4",
+      "notes": "http://bosh.io/releases/github.com/cloudfoundry/bosh?version=261.4"
     },
     "stemcell": {
       "name": "bosh-aws-xen-hvm-ubuntu-trusty-go_agent",
@@ -56,9 +56,9 @@
   },
   {
     "release": {
-      "name": "bosh",
-      "version": "261.4",
-      "notes": "http://bosh.io/releases/github.com/cloudfoundry/bosh?version=261.4"
+      "name": "bosh-aws-cpi",
+      "version": "64",
+      "notes": "https://github.com/cloudfoundry-incubator/bosh-aws-cpi-release/releases/tag/v64"
     },
     "stemcell": {
       "name": "bosh-aws-xen-hvm-ubuntu-trusty-go_agent",
