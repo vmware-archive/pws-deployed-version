@@ -2,23 +2,12 @@
   {
     "release": {
       "name": "cf",
-      "version": "256",
-      "notes": "https://github.com/cloudfoundry/cf-release/releases/tag/v256"
-    },
-    "stemcell": {
-      "name": "bosh-aws-xen-hvm-ubuntu-trusty-go_agent",
-      "version": "3363.15"
-    }
-  },
-  {
-    "release": {
-      "name": "cf",
       "version": "257",
       "notes": "https://github.com/cloudfoundry/cf-release/releases/tag/v257"
     },
     "stemcell": {
       "name": "bosh-aws-xen-hvm-ubuntu-trusty-go_agent",
-      "version": "3363.15"
+      "version": "3363.20"
     }
   },
   {
@@ -29,18 +18,7 @@
     },
     "stemcell": {
       "name": "bosh-aws-xen-hvm-ubuntu-trusty-go_agent",
-      "version": "3363.15"
-    }
-  },
-  {
-    "release": {
-      "name": "diego",
-      "version": "1.12.0",
-      "notes": "https://github.com/cloudfoundry/diego-release/releases/tag/v1.12.0"
-    },
-    "stemcell": {
-      "name": "bosh-aws-xen-hvm-ubuntu-trusty-go_agent",
-      "version": "3363.15"
+      "version": "3363.20"
     }
   },
   {
@@ -51,7 +29,7 @@
     },
     "stemcell": {
       "name": "bosh-aws-xen-hvm-ubuntu-trusty-go_agent",
-      "version": "3363.15"
+      "version": "3363.20"
     }
   },
   {
@@ -62,7 +40,7 @@
     },
     "stemcell": {
       "name": "bosh-aws-xen-hvm-ubuntu-trusty-go_agent",
-      "version": "3363.15"
+      "version": "3363.20"
     }
   },
   {
