@@ -12,9 +12,31 @@
   },
   {
     "release": {
+      "name": "cf",
+      "version": "258",
+      "notes": "https://github.com/cloudfoundry/cf-release/releases/tag/v258"
+    },
+    "stemcell": {
+      "name": "bosh-aws-xen-hvm-ubuntu-trusty-go_agent",
+      "version": "3363.20"
+    }
+  },
+  {
+    "release": {
       "name": "cflinuxfs2-rootfs",
       "version": "1.60.0",
       "notes": "https://github.com/cloudfoundry/cflinuxfs2-rootfs-release/releases/tag/v1.60.0"
+    },
+    "stemcell": {
+      "name": "bosh-aws-xen-hvm-ubuntu-trusty-go_agent",
+      "version": "3363.20"
+    }
+  },
+  {
+    "release": {
+      "name": "cflinuxfs2-rootfs",
+      "version": "1.115.0",
+      "notes": "https://github.com/cloudfoundry/cflinuxfs2-rootfs-release/releases/tag/v1.115.0"
     },
     "stemcell": {
       "name": "bosh-aws-xen-hvm-ubuntu-trusty-go_agent",
@@ -37,6 +59,17 @@
       "name": "garden-runc",
       "version": "1.2.0",
       "notes": "https://github.com/cloudfoundry/garden-runc-release/releases/tag/v1.2.0"
+    },
+    "stemcell": {
+      "name": "bosh-aws-xen-hvm-ubuntu-trusty-go_agent",
+      "version": "3363.20"
+    }
+  },
+  {
+    "release": {
+      "name": "garden-runc",
+      "version": "1.5.0",
+      "notes": "https://github.com/cloudfoundry/garden-runc-release/releases/tag/v1.5.0"
     },
     "stemcell": {
       "name": "bosh-aws-xen-hvm-ubuntu-trusty-go_agent",
