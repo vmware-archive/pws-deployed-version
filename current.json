@@ -24,17 +24,6 @@
   {
     "release": {
       "name": "diego",
-      "version": "1.15.1",
-      "notes": "https://github.com/cloudfoundry/diego-release/releases/tag/v1.15.1"
-    },
-    "stemcell": {
-      "name": "bosh-aws-xen-hvm-ubuntu-trusty-go_agent",
-      "version": "3363.20"
-    }
-  },
-  {
-    "release": {
-      "name": "diego",
       "version": "1.15.0",
       "notes": "https://github.com/cloudfoundry/diego-release/releases/tag/v1.15.0"
     },
