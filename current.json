@@ -64,5 +64,16 @@
       "name": "bosh-aws-xen-hvm-ubuntu-trusty-go_agent",
       "version": "3363.20"
     }
+  },
+  {
+    "release": {
+      "name": "bosh-aws-cpi",
+      "version": "65",
+      "notes": "https://github.com/cloudfoundry-incubator/bosh-aws-cpi-release/releases/tag/v65"
+    },
+    "stemcell": {
+      "name": "bosh-aws-xen-hvm-ubuntu-trusty-go_agent",
+      "version": "3363.20"
+    }
   }
 ]
