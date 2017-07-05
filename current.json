@@ -12,6 +12,17 @@
   },
   {
     "release": {
+      "name": "cf",
+      "version": "265",
+      "notes": "https://github.com/cloudfoundry/cf-release/releases/tag/v265"
+    },
+    "stemcell": {
+      "name": "bosh-aws-xen-hvm-ubuntu-trusty-go_agent",
+      "version": "3421.9"
+    }
+  },
+  {
+    "release": {
       "name": "diego",
       "version": "1.18.1",
       "notes": "https://github.com/cloudfoundry/diego-release/releases/tag/v1.18.1"
@@ -23,9 +34,31 @@
   },
   {
     "release": {
+      "name": "diego",
+      "version": "1.19.0",
+      "notes": "https://github.com/cloudfoundry/diego-release/releases/tag/v1.19.0"
+    },
+    "stemcell": {
+      "name": "bosh-aws-xen-hvm-ubuntu-trusty-go_agent",
+      "version": "3421.9"
+    }
+  },
+  {
+    "release": {
       "name": "garden-runc",
       "version": "1.8.0",
       "notes": "https://github.com/cloudfoundry/garden-runc-release/releases/tag/v1.8.0"
+    },
+    "stemcell": {
+      "name": "bosh-aws-xen-hvm-ubuntu-trusty-go_agent",
+      "version": "3421.9"
+    }
+  },
+  {
+    "release": {
+      "name": "garden-runc",
+      "version": "1.9.0",
+      "notes": "https://github.com/cloudfoundry/garden-runc-release/releases/tag/v1.9.0"
     },
     "stemcell": {
       "name": "bosh-aws-xen-hvm-ubuntu-trusty-go_agent",
