@@ -12,6 +12,17 @@
   },
   {
     "release": {
+      "name": "cf",
+      "version": "266",
+      "notes": "https://github.com/cloudfoundry/cf-release/releases/tag/v266"
+    },
+    "stemcell": {
+      "name": "bosh-aws-xen-hvm-ubuntu-trusty-go_agent",
+      "version": "3421.9"
+    }
+  },
+  {
+    "release": {
       "name": "diego",
       "version": "1.19.0",
       "notes": "https://github.com/cloudfoundry/diego-release/releases/tag/v1.19.0"
