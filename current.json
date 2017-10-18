@@ -12,9 +12,31 @@
   },
   {
     "release": {
+      "name": "cf",
+      "version": "277",
+      "notes": "https://github.com/cloudfoundry/cf-release/releases/tag/v277"
+    },
+    "stemcell": {
+      "name": "bosh-aws-xen-hvm-ubuntu-trusty-go_agent",
+      "version": "3445.11"
+    }
+  },
+  {
+    "release": {
       "name": "diego",
       "version": "1.26.2",
       "notes": "https://github.com/cloudfoundry/diego-release/releases/tag/v1.26.2"
+    },
+    "stemcell": {
+      "name": "bosh-aws-xen-hvm-ubuntu-trusty-go_agent",
+      "version": "3445.11"
+    }
+  },
+  {
+    "release": {
+      "name": "diego",
+      "version": "1.27.0",
+      "notes": "https://github.com/cloudfoundry/diego-release/releases/tag/v1.27.0"
     },
     "stemcell": {
       "name": "bosh-aws-xen-hvm-ubuntu-trusty-go_agent",
