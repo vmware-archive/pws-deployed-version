@@ -10,8 +10,8 @@ require 'uri'
 require 'json'
 
 def get_cf_deployed_versions(deployment:)
-  target = ENV["BOSH_DIRECTOR"]
-  ca_cert = ENV["BOSH_CA_CERT_PATH"]
+  target = ENV['BOSH_DIRECTOR']
+  ca_cert = ENV['BOSH_CA_CERT_PATH']
 
   token_decoder = Bosh::Cli::Client::Uaa::TokenDecoder.new
   director_client = Bosh::Cli::Client::Director.new(target, nil, ca_cert: ca_cert)
@@ -28,7 +28,7 @@ end
 
 
 def get_bosh_director_deployed_versions(deployment:)
-  director = ENV["BOSH_DIRECTOR"].sub("bosh", "micro")
+  director = ENV['BOSH_DIRECTOR'].sub("bosh", "micro")
   bosh_user = ENV['BOSH_USER']
   bosh_password = ENV['BOSH_PASSWORD']
 
@@ -47,11 +47,11 @@ def get_bosh_director_deployed_versions(deployment:)
 end
 
 def extract_releases_and_stemcells(deployment_details, releases)
-  stemcell_version = deployment_details["stemcells"].first
+  stemcell_version = deployment_details['stemcells'].first
 
-  final_output = deployment_details["releases"].each_with_object([]) do |release_hash, memo|
+  final_output = deployment_details['releases'].each_with_object([]) do |release_hash, memo|
     if releases.include?(release_hash['name'])
-      memo << { "release" => release_hash, "stemcell" => stemcell_version}
+      memo << { 'release' => release_hash, 'stemcell' => stemcell_version}
     end
   end
 
@@ -70,6 +70,16 @@ def main
   deployed_versions.sort! {|i,j| i['release']['name'] <=> j['release']['name'] }
 
   deployed_versions += extract_releases_and_stemcells(bosh_deployment_info, ['bosh'])
+
+  ## for every release specified above, make sure there is an entry for each release in release_repos.json
+  ## this updates the link in the statuspage to the correct github URL
+  release_repos = JSON.parse(IO.read 'release_repos.json')
+  deployed_versions.map do |release_hash|
+    release_repo_url = release_repos[release_hash['release']['name']]
+    updated_release_version = release_hash['release']['version']
+    updated_release_repo_url = release_repo_url + updated_release_version
+    release_hash['release']['notes'] = updated_release_repo_url
+  end
 
   result = JSON.pretty_generate(deployed_versions)
   IO.write('current.json', result)
