@@ -76,7 +76,9 @@ def main
   release_repos = JSON.parse(IO.read 'release_repos.json')
   deployed_versions.map do |release_hash|
     release_repo_url = release_repos[release_hash['release']['name']]
+    raise "release not found in release_repos.json, please add before continuing" if release_repo_url.nil?
     updated_release_version = release_hash['release']['version']
+
     updated_release_repo_url = release_repo_url + updated_release_version
     release_hash['release']['notes'] = updated_release_repo_url
   end
