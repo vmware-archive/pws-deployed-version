@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+
 require 'open3'
 require 'timeout'
 require 'json'
@@ -8,99 +9,71 @@ require 'net/http'
 require 'uri'
 require 'json'
 
-LOGGER ||= Logger.new($stderr)
-
-def get_deployment_details_with_uaa(deployment:, releases:)
-  deployment_name=deployment
-  releases_name=releases #TODO this should be a list
-
-  raise 'no deployment name specified' if deployment_name.nil?
-  raise 'no releases specified' if releases_name.empty?
-
+def get_cf_deployed_versions(deployment:)
   target = ENV["BOSH_DIRECTOR"]
   ca_cert = ENV["BOSH_CA_CERT_PATH"]
 
   token_decoder = Bosh::Cli::Client::Uaa::TokenDecoder.new
   director_client = Bosh::Cli::Client::Director.new(target, nil, ca_cert: ca_cert)
   auth_info = Bosh::Cli::Client::Uaa::AuthInfo.new(director_client, ENV, ca_cert)
-
   token_provider = Bosh::Cli::Client::Uaa::TokenProvider.new(auth_info, nil, token_decoder, target)
-
   credentials = Bosh::Cli::Client::UaaCredentials.new(token_provider)
   auth_director = Bosh::Cli::Client::Director.new(target, credentials, { ca_cert: ca_cert })
 
-  output = auth_director.list_deployments
+  deployments = auth_director.list_deployments
+  deployment_details = deployments.select {|d| d['name'] == deployment}.first
 
-  deployment_details = output.select {|d| d["name"] == deployment_name }.first
-  stemcell_details = deployment_details["stemcells"].first
-
-  final_output = deployment_details["releases"].each_with_object([]) do |release_hash, memo|
-    if releases_name.include?(release_hash['name'])
-      memo << { "release" => release_hash, "stemcell" => stemcell_details}
-    end
-  end
-
-  final_output
+  return deployment_details
 end
 
 
-def get_deployment_details_without_uaa(deployment:, releases:)
-  uri = URI.parse("#{ENV['BOSH_DIRECTOR']}/deployments")
+def get_bosh_director_deployed_versions(deployment:)
+  director = ENV["BOSH_DIRECTOR"].sub("bosh", "micro")
+  bosh_user = ENV['BOSH_USER']
+  bosh_password = ENV['BOSH_PASSWORD']
+
+  uri = URI.parse("#{director}/deployments")
   http = Net::HTTP.new(uri.host, uri.port)
   http.use_ssl = true
   http.verify_mode = OpenSSL::SSL::VERIFY_NONE
   request = Net::HTTP::Get.new(uri.request_uri)
-  request.basic_auth(ENV['BOSH_USER'], ENV['BOSH_PASSWORD'])
-  response = http.request(request)
-  output = JSON.parse(response.body)
+  request.basic_auth(bosh_user, bosh_password)
 
-  deployment_details = output.select {|d| d["name"] == deployment}.first
-  stemcell_details = deployment_details["stemcells"].first
+  response = http.request(request)
+  deployments = JSON.parse(response.body)
+  deployment_details = deployments.select {|d| d['name'] == deployment}.first
+
+  return deployment_details
+end
+
+def extract_releases_and_stemcells(deployment_details, releases)
+  stemcell_version = deployment_details["stemcells"].first
 
   final_output = deployment_details["releases"].each_with_object([]) do |release_hash, memo|
     if releases.include?(release_hash['name'])
-      memo << { "release" => release_hash, "stemcell" => stemcell_details}
+      memo << { "release" => release_hash, "stemcell" => stemcell_version}
     end
   end
 
   final_output
 end
 
-
-
-def get_deployed_version(deployment:, use_uaa:, releases:)
-  output = []
-
-  if use_uaa
-    details = get_deployment_details_with_uaa(deployment: deployment, releases: releases)
-    details.each do |v|
-      output << v
-    end
-  else
-    details = get_deployment_details_without_uaa(deployment: deployment, releases: releases)
-    details.each do |v|
-      output << v
-    end
-  end
-
-  output
+def logger
+  logger ||= Logger.new($stderr)
 end
 
+def main
+  cf_deployment_info = get_cf_deployed_versions(deployment: 'cf-cfapps-io2-diego')
+  bosh_deployment_info = get_bosh_director_deployed_versions(deployment: 'vpc-bosh-run-pivotal-io')
 
-# main
-poutput = get_deployed_version(deployment:'cf-cfapps-io2-diego', use_uaa: true, releases: %w(cf diego etcd garden-runc cflinuxfs2-rootfs))
+  deployed_versions = extract_releases_and_stemcells(cf_deployment_info, ['cf', 'diego', 'grootfs', 'garden-runc', 'cflinuxfs2'])
+  deployed_versions.sort! {|i,j| i['release']['name'] <=> j['release']['name'] }
 
-poutput.sort! {|i,j| i['release']['name'] <=> j['release']['name'] }
+  deployed_versions += extract_releases_and_stemcells(bosh_deployment_info, ['bosh'])
 
-ENV['BOSH_DIRECTOR'] = ENV['BOSH_DIRECTOR'].sub("bosh", "micro")
-poutput += get_deployed_version(deployment: 'vpc-bosh-run-pivotal-io', use_uaa: false, releases: 'bosh')
-notes = JSON.parse(IO.read 'notes.json')
-
-poutput.map do |thing| 
-  notes_with_version = notes[thing["release"]["name"]] + thing["release"]["version"]
-  thing["release"]["notes"] = notes_with_version
+  result = JSON.pretty_generate(deployed_versions)
+  IO.write('current.json', result)
+  logger.info("wrote #{result} to current.json")
 end
 
-result = JSON.pretty_generate(poutput)
-IO.write( 'current.json', result )
-LOGGER.info("wrote #{result} to current.json")
+main
