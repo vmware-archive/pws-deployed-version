@@ -1,11 +1,6 @@
 # PWS deployed version
 
-This repo contains the currently deployed version of:
-
-- [CF-release](https://bosh.io/releases/github.com/cloudfoundry/cf-release)
-- [Diego-release](https://bosh.io/releases/github.com/cloudfoundry-incubator/diego-release)
-- [etcd-release](https://bosh.io/releases/github.com/cloudfoundry-incubator/etcd-release)
-- [garden-linux-release](https://bosh.io/releases/github.com/cloudfoundry-incubator/garden-linux-release)
+This repo contains the currently deployed versions of every release in release_repos.json
 
 The current.json file is consumed by [https://status.run.pivotal.io](https://status.run.pivotal.io)
 
@@ -28,7 +23,3 @@ bin/get_deployed_vers <deploymentname> <releasename_1> [releasename_2] [releasen
 # same exports as above
 bin/update_current
 ```
-
-# Requirements
-
-jq >= 1.5 in $PATH
