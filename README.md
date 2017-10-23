@@ -17,6 +17,8 @@ The current.json file is consumed by [https://status.run.pivotal.io](https://sta
 export BOSH_DIRECTOR=https://uri.to.bosh:25555
 export BOSH_USER=bosh
 export BOSH_PASSWORD=sameasmyluggage
+export BOSH_CLIENT=someclient
+export BOSH_CLIENT_SECRET=somesupersecret
 
 bin/get_deployed_vers <deploymentname> <releasename_1> [releasename_2] [releasename_n]
 ```

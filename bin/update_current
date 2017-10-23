@@ -3,45 +3,97 @@ require 'open3'
 require 'timeout'
 require 'json'
 require 'logger'
+require 'cli'
+require 'net/http'
+require 'uri'
+require 'json'
 
 LOGGER ||= Logger.new($stderr)
 
-def get_deployed_version(deployments, use_uaa, *releases)
-  if use_uaa
-    cmd = [File.expand_path('../get_deployed_versions.rb', __FILE__)]
-  else
-    cmd = [File.expand_path('../get_deployed_versions', __FILE__)]
-  end
-  cmd << deployments
-  cmd += releases
-  status = nil
-  output = ''
-  Open3.popen2(cmd.join(' ')) do |i, o, t|
-    begin
-      pid = t.pid
-      Timeout.timeout(9) do
-        o.each { |v|
-          output << v
-        }
-      end
-    rescue Timeout::Error
-      LOGGER.warn "Timing out #{t.inspect} after 1 second"
-      Process.kill(15, pid)
-    ensure
-      status = t.value
+def get_deployment_details_with_uaa(deployment:, releases:)
+  deployment_name=deployment
+  releases_name=releases #TODO this should be a list
+
+  raise 'no deployment name specified' if deployment_name.nil?
+  raise 'no releases specified' if releases_name.empty?
+
+  target = ENV["BOSH_DIRECTOR"]
+  ca_cert = ENV["BOSH_CA_CERT_PATH"]
+
+  token_decoder = Bosh::Cli::Client::Uaa::TokenDecoder.new
+  director_client = Bosh::Cli::Client::Director.new(target, nil, ca_cert: ca_cert)
+  auth_info = Bosh::Cli::Client::Uaa::AuthInfo.new(director_client, ENV, ca_cert)
+
+  token_provider = Bosh::Cli::Client::Uaa::TokenProvider.new(auth_info, nil, token_decoder, target)
+
+  credentials = Bosh::Cli::Client::UaaCredentials.new(token_provider)
+  auth_director = Bosh::Cli::Client::Director.new(target, credentials, { ca_cert: ca_cert })
+
+  output = auth_director.list_deployments
+
+  deployment_details = output.select {|d| d["name"] == deployment_name }.first
+  stemcell_details = deployment_details["stemcells"].first
+
+  final_output = deployment_details["releases"].each_with_object([]) do |release_hash, memo|
+    if releases_name.include?(release_hash['name'])
+      memo << { "release" => release_hash, "stemcell" => stemcell_details}
     end
   end
-  raise "Problem running #{cmd}\n\n#{output}" unless status.success?
-  JSON.parse(output)
+
+  final_output
 end
 
+
+def get_deployment_details_without_uaa(deployment:, releases:)
+  uri = URI.parse("#{ENV['BOSH_DIRECTOR']}/deployments")
+  http = Net::HTTP.new(uri.host, uri.port)
+  http.use_ssl = true
+  http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+  request = Net::HTTP::Get.new(uri.request_uri)
+  request.basic_auth(ENV['BOSH_USER'], ENV['BOSH_PASSWORD'])
+  response = http.request(request)
+  output = JSON.parse(response.body)
+
+  deployment_details = output.select {|d| d["name"] == deployment}.first
+  stemcell_details = deployment_details["stemcells"].first
+
+  final_output = deployment_details["releases"].each_with_object([]) do |release_hash, memo|
+    if releases.include?(release_hash['name'])
+      memo << { "release" => release_hash, "stemcell" => stemcell_details}
+    end
+  end
+
+  final_output
+end
+
+
+
+def get_deployed_version(deployment:, use_uaa:, releases:)
+  output = []
+
+  if use_uaa
+    details = get_deployment_details_with_uaa(deployment: deployment, releases: releases)
+    details.each do |v|
+      output << v
+    end
+  else
+    details = get_deployment_details_without_uaa(deployment: deployment, releases: releases)
+    details.each do |v|
+      output << v
+    end
+  end
+
+  output
+end
+
+
 # main
-poutput = get_deployed_version('cf-cfapps-io2-diego', true, %w(cf diego etcd garden-runc cflinuxfs2-rootfs))
+poutput = get_deployed_version(deployment:'cf-cfapps-io2-diego', use_uaa: true, releases: %w(cf diego etcd garden-runc cflinuxfs2-rootfs))
 
 poutput.sort! {|i,j| i['release']['name'] <=> j['release']['name'] }
 
 ENV['BOSH_DIRECTOR'] = ENV['BOSH_DIRECTOR'].sub("bosh", "micro")
-poutput += get_deployed_version('vpc-bosh-run-pivotal-io', false, 'bosh')
+poutput += get_deployed_version(deployment: 'vpc-bosh-run-pivotal-io', use_uaa: false, releases: 'bosh')
 notes = JSON.parse(IO.read 'notes.json')
 
 poutput.map do |thing| 
