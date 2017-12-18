@@ -1,9 +1,4 @@
 {
-  "diego": "https://github.com/cloudfoundry/diego-release/releases/tag/v",
-  "etcd": "https://github.com/cloudfoundry-incubator/etcd-release/releases/tag/v",
-  "garden-runc": "https://github.com/cloudfoundry/garden-runc-release/releases/tag/v",
-  "cf": "https://github.com/cloudfoundry/cf-release/releases/tag/v",
-  "bosh": "http://bosh.io/releases/github.com/cloudfoundry/bosh?version=",
-  "cflinuxfs2": "https://github.com/cloudfoundry/cflinuxfs2-release/releases/tag/v",
-  "grootfs": "https://github.com/cloudfoundry/grootfs-release/releases/tag/v"
+  "cf-deployment": "https://github.com/cloudfoundry/cf-deployment/releases/tag/",
+  "bosh": "http://bosh.io/releases/github.com/cloudfoundry/bosh?version="
 }
