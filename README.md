@@ -6,20 +6,11 @@ The current.json file is consumed by [https://status.run.pivotal.io](https://sta
 
 # Usage
 
-# get deployed version of an arbitrary deployment
-
 ```
-export BOSH_DIRECTOR=https://uri.to.bosh:25555
-export BOSH_USER=bosh
-export BOSH_PASSWORD=sameasmyluggage
-export BOSH_CLIENT=someclient
-export BOSH_CLIENT_SECRET=somesupersecret
-
-bin/get_deployed_vers <deploymentname> <releasename_1> [releasename_2] [releasename_n]
+bin/update_current release version stemcell
 ```
 
-# update the current.json in regards to Pivotal Web Services
+For example, in CI we can run this script after a cf-deployment succeeds like so:
 ```
-# same exports as above
-bin/update_current
+bin/update_current cf-deployment 1.0.0 3445.11
 ```
