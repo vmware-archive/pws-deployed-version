@@ -2,12 +2,12 @@
   {
     "release": {
       "name": "cf-deployment",
-      "version": "v1.25.0",
-      "notes": "https://github.com/cloudfoundry/cf-deployment/releases/tag/v1.25.0"
+      "version": "v1.26.0",
+      "notes": "https://github.com/cloudfoundry/cf-deployment/releases/tag/v1.26.0"
     },
     "stemcell": {
       "name": "bosh-aws-xen-hvm-ubuntu-trusty-go_agent",
-      "version": "3541.10"
+      "version": "3541.12"
     }
   },
   {
