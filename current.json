@@ -13,7 +13,7 @@
   {
     "release": {
       "name": "bosh",
-      "version": "266.3.0",
+      "version": "266.4.0",
       "notes": "http://bosh.io/releases/github.com/cloudfoundry/bosh?version=266.3.0"
     },
     "stemcell": {
