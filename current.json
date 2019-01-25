@@ -6,7 +6,7 @@
       "notes": "https://github.com/cloudfoundry/cf-deployment/releases/tag/v6.10.0"
     },
     "stemcell": {
-      "name": "bosh-aws-xen-hvm-ubuntu-trusty-go_agent",
+      "name": "bosh-aws-xen-hvm-ubuntu-xenial-go_agent",
       "version": "170.16"
     }
   },
@@ -17,7 +17,7 @@
       "notes": "http://bosh.io/releases/github.com/cloudfoundry/bosh?version=268.1.0"
     },
     "stemcell": {
-      "name": "bosh-aws-xen-hvm-ubuntu-trusty-go_agent",
+      "name": "bosh-aws-xen-hvm-ubuntu-xenial-go_agent",
       "version": "170.5"
     }
   }
