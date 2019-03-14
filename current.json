@@ -2,12 +2,12 @@
   {
     "release": {
       "name": "cf-deployment",
-      "version": "v7.4.0",
-      "notes": "https://github.com/cloudfoundry/cf-deployment/releases/tag/v7.4.0"
+      "version": "v7.6.0",
+      "notes": "https://github.com/cloudfoundry/cf-deployment/releases/tag/v7.6.0"
     },
     "stemcell": {
       "name": "bosh-aws-xen-hvm-ubuntu-xenial-go_agent",
-      "version": "250.4"
+      "version": "250.9"
     }
   },
   {
