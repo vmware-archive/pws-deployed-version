@@ -13,8 +13,8 @@
   {
     "release": {
       "name": "bosh",
-      "version": "269.0.1",
-      "notes": "http://bosh.io/releases/github.com/cloudfoundry/bosh?version=269.0.1"
+      "version": "270.1.1",
+      "notes": "http://bosh.io/releases/github.com/cloudfoundry/bosh?version=270.1.1"
     },
     "stemcell": {
       "name": "bosh-aws-xen-hvm-ubuntu-xenial-go_agent",
