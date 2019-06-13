@@ -13,7 +13,7 @@
   {
     "release": {
       "name": "bosh",
-      "version": "BRENDAN JAMES",
+      "version": "270.1.1",
       "notes": "http://bosh.io/releases/github.com/cloudfoundry/bosh?version=270.1.1"
     },
     "stemcell": {
