@@ -7,7 +7,7 @@
     },
     "stemcell": {
       "name": "bosh-aws-xen-hvm-ubuntu-xenial-go_agent",
-      "version": "456.27"
+      "version": "456.30"
     }
   },
   {
